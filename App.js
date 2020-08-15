@@ -21,7 +21,7 @@ import SNav from './Navigation/SNavigation';
 import RNav from './Navigation/RNavigation';
 import RootStackScreen from './RootStackScreen';
 
-// it work as contaienr to pass the state / function globally in all the screen of app 
+// it work as container to pass the state / function globally in all the screen of app 
 import {AuthContext , ip} from './components/Context';
 import { cos } from 'react-native-reanimated';
 
