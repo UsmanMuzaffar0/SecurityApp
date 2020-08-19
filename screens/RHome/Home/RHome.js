@@ -15,8 +15,8 @@ export default class RHome extends Component {
         <View style={styles.container}>
           <View style={styles.row}>
               <View style={styles.widgets}>
-                <TouchableOpacity onPress={()=> this.props.navigation.navigate('Contact')}>
-                  <Text style={styles.text} > Contacts </Text>
+                <TouchableOpacity onPress={()=> this.props.navigation.navigate('Communication')}>
+                  <Text style={styles.text} > Communication </Text>
                 </TouchableOpacity>
               </View>
               <View style={styles.widgets}>

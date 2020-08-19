@@ -8,11 +8,14 @@ import {
   Text,
   View,
   FlatList,
-  TextInput
+  TextInput,
+  Button,
+  Alert
 } from "react-native";
 
 import Contacts from "react-native-contacts";
 import ListItem from "../../../components/ListItem";
+
 
 const  Contact =() => {
   let [contacts, setContacts] = useState([]);
@@ -93,6 +96,7 @@ const  Contact =() => {
         />
       </View>
     </SafeAreaView>
+    
   );
 }
 export default Contact;

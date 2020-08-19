@@ -14,7 +14,7 @@ import {
 
 import Signup from '../screens/Signup/Signup';
 import HomeScreen from '../screens/RHome/Home/RHome';
-import Contact from '../screens/RHome/Contact/Contact';
+import Contact from '../screens/RHome/Communication/Contact';
 import EmergencySignal from '../screens/RHome/EmergencySignal/EmergencySignal';
 import Help from '../screens/RHome/Help/Help';
 import Settings from '../screens/RHome/Settings/Settings';
@@ -26,6 +26,8 @@ import ComplaintAndSuggestion from '../screens/RHome/ComplaintAndSuggestions/Com
 import Complaints from '../screens/RHome/ComplaintAndSuggestions/Complaints';
 import Suggestions from '../screens/RHome/ComplaintAndSuggestions/Suggestions';
 import TrackSecurity from '../screens/RHome/TrackSecurity/TrackSecurity';
+import Communication from '../screens/RHome/Communication/Communications';
+import Chat from '../screens/RHome/Communication/Chat';
 
 const Stack = createStackNavigator();
 
@@ -55,6 +57,7 @@ export default class ANavigation extends Component{
                 title: 'Resident Home',
               }} />
             <Stack.Screen name="Contact" component={Contact}  />
+            <Stack.Screen name="Chat" component={Chat}  />
             <Stack.Screen name="EmergencySignals" component={EmergencySignal}  />
             <Stack.Screen name="Helps" component={Help}  />
             <Stack.Screen name="ComplaintAndSuggestion" component={ComplaintAndSuggestion}  />
@@ -66,6 +69,7 @@ export default class ANavigation extends Component{
             <Stack.Screen name="Firehazard" component={FireHazardsSensors}  />
             <Stack.Screen name="Intrusion" component={IntrusionSesnors} /> 
             <Stack.Screen name="AccountSettings" component={AccountSettings}  />
+            <Stack.Screen name="Communication" component={Communication}/>
         </Stack.Navigator>
        
     </SafeAreaProvider>
