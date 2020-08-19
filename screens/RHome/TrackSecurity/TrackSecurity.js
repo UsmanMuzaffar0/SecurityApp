@@ -93,6 +93,7 @@ export default class TrackSecurity extends Component {
   }
 }
 
+
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject
