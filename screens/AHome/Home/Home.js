@@ -13,8 +13,8 @@ export default class HomeScreen extends Component {
         <View style={homeStyle.container}>
         <View style={homeStyle.row}>
             <View style={homeStyle.widgets}>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate('Contacts')}>
-                <Text style={homeStyle.text} > Contact </Text>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('Communication')}>
+                <Text style={homeStyle.text} > Communication </Text>
               </TouchableOpacity>
             </View>
             <View style={homeStyle.widgets}>

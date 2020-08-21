@@ -16,8 +16,7 @@ import {
 import Login from '../screens/Login/Login';
 import Signup from '../screens/Signup/Signup';
 import HomeScreen from '../screens/AHome/Home/Home';
-import Contacts from '../screens/AHome/Contact/Contacts';
-import ContactDetails from '../screens/AHome/Contact/ContactDetails';
+import Contacts from '../screens/AHome/Communication/Contact';
 import TrackSecurity from '../screens/AHome/TrackSecurity/TrackSecurity';
 import ComplaintAndSuggestion from '../screens/AHome/ComplaintAndSuggestions/ComplaintsSuggestion';
 import Complaints from '../screens/AHome/ComplaintAndSuggestions/Complaints';
@@ -25,6 +24,8 @@ import Suggestions from '../screens/AHome/ComplaintAndSuggestions/Suggestions';
 import Settings from '../screens/AHome/Settings/Settings';
 import UpdateAccount from '../screens/AHome/Settings/AccountSetting/updateAccount';
 import DelResidentSecurity from '../screens/AHome/Settings/DelResidentSecurity/DelResidentSecurity'
+import Communication from '../screens/AHome/Communication/Communications';
+import Chat from '../screens/AHome/Communication/Chat';
 
 
 const Stack = createStackNavigator();
@@ -43,8 +44,9 @@ export default function ANavigation(){
                 title: 'Admin Home',
              }} />
          
-          <Stack.Screen name="Contacts" component={Contacts} />
-          <Stack.Screen name="ContactDetails" component={ContactDetails} />
+          <Stack.Screen name="Contact" component={Contacts} />
+          <Stack.Screen name="Chat" component={Chat}  />
+          <Stack.Screen name="Communication" component={Communication}/>
           <Stack.Screen name="TrackSecurity" component={TrackSecurity} />
           <Stack.Screen name="ComplaintAndSuggestion" component={ComplaintAndSuggestion} />
           <Stack.Screen name="Complaints" component={Complaints} />

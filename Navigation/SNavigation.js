@@ -11,13 +11,15 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 /*Security Screesn Imports */
 
 import HomeScreen from '../screens/SHome/Home/SHome';
-import Contact from '../screens/SHome/Contact/Contact';
+import Contact from '../screens/SHome/Communication/Contact';
 import SignalBlink from '../screens/SHome/SignalBlink/SignalBlink';
 import Help from '../screens/SHome/Help/Help';
 import UpdateAccount from '../screens/SHome/Settigns/UpdateAccount/UpdateAccount';
 import TrackResident from '../screens/SHome/TrackResident/TrackResident';
 import MatchCode from '../screens/SHome/MatchCode/MatchCode';
 import Settigns from '../screens/SHome/Settigns/Settings';
+import Communication from '../screens/SHome/Communication/Communications';
+import Chat from '../screens/SHome/Communication/Chat';
 
 const Stack = createStackNavigator();
 
@@ -35,6 +37,8 @@ export default function ANavigation(){
                 }} />
             
             <Stack.Screen name="Contact" component={Contact}  />
+            <Stack.Screen name="Chat" component={Chat}  />
+            <Stack.Screen name="Communication" component={Communication}/>
             <Stack.Screen name="SignalBlink" component={SignalBlink}  />
             <Stack.Screen name="Help" component={Help}  />
             <Stack.Screen name="TrackResident" component={TrackResident}  />

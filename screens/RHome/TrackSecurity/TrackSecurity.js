@@ -4,10 +4,6 @@ import {
   View,
   Text,
   TouchableOpacity,
-  Image,
-  Button,
-  Alert,
-  Platform,
   Dimensions
 } from 'react-native';
 import MapView,

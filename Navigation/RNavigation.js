@@ -58,6 +58,7 @@ export default class ANavigation extends Component{
               }} />
             <Stack.Screen name="Contact" component={Contact}  />
             <Stack.Screen name="Chat" component={Chat}  />
+            <Stack.Screen name="Communication" component={Communication}/>
             <Stack.Screen name="EmergencySignals" component={EmergencySignal}  />
             <Stack.Screen name="Helps" component={Help}  />
             <Stack.Screen name="ComplaintAndSuggestion" component={ComplaintAndSuggestion}  />
@@ -69,7 +70,6 @@ export default class ANavigation extends Component{
             <Stack.Screen name="Firehazard" component={FireHazardsSensors}  />
             <Stack.Screen name="Intrusion" component={IntrusionSesnors} /> 
             <Stack.Screen name="AccountSettings" component={AccountSettings}  />
-            <Stack.Screen name="Communication" component={Communication}/>
         </Stack.Navigator>
        
     </SafeAreaProvider>
