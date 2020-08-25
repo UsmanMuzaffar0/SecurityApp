@@ -5,7 +5,7 @@ import context, { ip } from "../../../components/Context";
 import { GiftedChat } from 'react-native-gifted-chat';
 import JoinScreen from "./JoinScreen";
 
-export default function Chat() {
+export default function GroupChat() {
     
      //receives multiple msgs in array
     const [receiveMessage, setReceiveMessage]= useState([]);

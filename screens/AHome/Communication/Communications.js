@@ -18,8 +18,8 @@ export default class  Communications extends Component {
           />
         <Separator />
         <Button
-            title="Chat"
-            onPress={() => this.props.navigation.navigate('Chat')}
+            title="Message"
+            onPress={() => this.props.navigation.navigate('Sms')}
           />
           </View>
         

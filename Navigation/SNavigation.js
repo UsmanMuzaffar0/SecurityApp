@@ -20,6 +20,7 @@ import MatchCode from '../screens/SHome/MatchCode/MatchCode';
 import Settigns from '../screens/SHome/Settigns/Settings';
 import Communication from '../screens/SHome/Communication/Communications';
 import Chat from '../screens/SHome/Communication/Chat';
+import Sms from '../screens/SHome/Communication/Sms';
 
 const Stack = createStackNavigator();
 
@@ -38,6 +39,7 @@ export default function ANavigation(){
             
             <Stack.Screen name="Contact" component={Contact}  />
             <Stack.Screen name="Chat" component={Chat}  />
+            <Stack.Screen name="Sms" component={Sms}  />
             <Stack.Screen name="Communication" component={Communication}/>
             <Stack.Screen name="SignalBlink" component={SignalBlink}  />
             <Stack.Screen name="Help" component={Help}  />

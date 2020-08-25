@@ -112,7 +112,7 @@ const authContext = useMemo( () => (
             // console.log(json.role);
             console.log((json))
             if(json.message == "User not found! please try again!"){
-              Alert.alert('Ooops!!!','invalid Credenntials');
+              Alert.alert('Ooops!!!','invalid Credentials');
             }else{
                SaveUserDetailsInLocalStorageAfterSignIn(json.role,token);
 

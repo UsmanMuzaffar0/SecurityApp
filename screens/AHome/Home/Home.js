@@ -18,7 +18,9 @@ export default class HomeScreen extends Component {
               </TouchableOpacity>
             </View>
             <View style={homeStyle.widgets}>
-              <Text style={homeStyle.text}> Groups </Text>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('GroupChat')}>
+                <Text style={homeStyle.text} > Group </Text>
+              </TouchableOpacity>
             </View>
         </View>
 

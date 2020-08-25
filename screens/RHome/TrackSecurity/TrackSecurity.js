@@ -58,6 +58,17 @@ export default class TrackSecurity extends Component {
     });
   };
 
+  onMarkerPressed = (location, index) => {
+    this._map.animateToRegion({
+      latitude: location.latitude,
+      longitude: location.longitude,
+      latitudeDelta: 0.09,
+      longitudeDelta: 0.035
+    });
+
+    this._carousel.snapToItem(index);
+  }
+
   getLocationHandler = () => {
     Geolocation.getCurrentPosition(pos => {
         const coordsEvent = {

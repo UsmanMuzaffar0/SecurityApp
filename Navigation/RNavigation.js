@@ -28,6 +28,7 @@ import Suggestions from '../screens/RHome/ComplaintAndSuggestions/Suggestions';
 import TrackSecurity from '../screens/RHome/TrackSecurity/TrackSecurity';
 import Communication from '../screens/RHome/Communication/Communications';
 import Chat from '../screens/RHome/Communication/Chat';
+import Sms from '../screens/RHome/Communication/Sms';
 
 const Stack = createStackNavigator();
 
@@ -58,6 +59,7 @@ export default class ANavigation extends Component{
               }} />
             <Stack.Screen name="Contact" component={Contact}  />
             <Stack.Screen name="Chat" component={Chat}  />
+            <Stack.Screen name="Sms" component={Sms} />
             <Stack.Screen name="Communication" component={Communication}/>
             <Stack.Screen name="EmergencySignals" component={EmergencySignal}  />
             <Stack.Screen name="Helps" component={Help}  />

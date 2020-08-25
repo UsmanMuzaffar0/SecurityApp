@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View, Text ,Button, ActivityIndicator, StyleSheet, FlatList} from 'react-native';
+import { View, Text , ActivityIndicator, StyleSheet} from 'react-native';
 
 export default class EmergencySignal extends Component {
   
@@ -12,7 +12,7 @@ export default class EmergencySignal extends Component {
   }
 
   componentDidMount() {
-      return fetch('https://api.thingspeak.com/channels/1121453/fields/2.json', )
+      return fetch('https://api.thingspeak.com/channels/1121453/feeds.json?results=1', )
              .then ( ( response) => response.json())
              .then( (responseJson) => {
                 
@@ -36,19 +36,38 @@ export default class EmergencySignal extends Component {
         </View>
       )
     }else{
-      return(
-      <FlatList
-                    data={this.state.dataSource}
-                    keyExtractor={(item,index) => index.toString()}
-                    renderItem={({item}) =>
-                    <View style={{backgroundColor:'#546e7a',padding:10,margin:10}}>
-                        <Text style={{color:'#ffffff', fontWeight:'bold',}}>Entry ID: {item.entry_id}</Text>
-                        <Text style={{color:'#ffffff'}}>Smoke Sensing Value: {item.field1}</Text>
-                        <Text style={{color:'#ffffff'}}>Motion Sensor Value in Boolean form: {item.field2}</Text>
-                        <Text style={{color:'#ffffff'}}>Time of Detection:  {item.created_at}</Text>
-                    </View>
-                    } />
-      );
+      let feeds = this.state.dataSource.map((val, key) =>{
+      
+        if (val.field1 == null && val.field2 == '0') 
+        {
+            return <View key={key} style={styles.item}>
+                  <Text style={{fontSize:60, flex:1, marginTop:10}}>
+                      No Issue
+                  </Text>
+                  </View>
+        }else if (val.field1 == '0' && val.field2 == null) 
+        {
+            return <View key={key} style={styles.item}>
+                  <Text style={{fontSize:60, flex:1, marginTop:10}}>
+                      No Issue
+                  </Text>
+                  </View>
+        }else if (val.field1 == null && val.field2 == null) 
+        {
+            return <View key={key} style={styles.item}>
+                  <Text style={{fontSize:60, flex:1, marginTop:10}}>
+                      Sensors are not in working Condition!
+                  </Text>
+                  </View>
+        }
+        else if(val.field2 == 1)
+        {
+            alert("SomeOne is here, Motion detected: "+val.field2);
+        }else if (val.field1 >= 20 ) 
+        {   
+            alert("Smoke Detected, Danger!!! " );
+        }
+      });
 
       return(
         <View style={styles.container}>

@@ -9,8 +9,6 @@ import {
     Button
   } from 'react-native';
 
-
-
 /*Admin Screesn Imports */
 
 import Login from '../screens/Login/Login';
@@ -25,7 +23,9 @@ import Settings from '../screens/AHome/Settings/Settings';
 import UpdateAccount from '../screens/AHome/Settings/AccountSetting/updateAccount';
 import DelResidentSecurity from '../screens/AHome/Settings/DelResidentSecurity/DelResidentSecurity'
 import Communication from '../screens/AHome/Communication/Communications';
-import Chat from '../screens/AHome/Communication/Chat';
+import GroupChat from '../screens/AHome/Groups/GroupChat';
+import Sms from '../screens/AHome/Communication/Sms';
+
 
 
 const Stack = createStackNavigator();
@@ -45,7 +45,8 @@ export default function ANavigation(){
              }} />
          
           <Stack.Screen name="Contact" component={Contacts} />
-          <Stack.Screen name="Chat" component={Chat}  />
+          <Stack.Screen name="Sms" component={Sms} />
+          <Stack.Screen name="GroupChat" component={GroupChat}  />
           <Stack.Screen name="Communication" component={Communication}/>
           <Stack.Screen name="TrackSecurity" component={TrackSecurity} />
           <Stack.Screen name="ComplaintAndSuggestion" component={ComplaintAndSuggestion} />
