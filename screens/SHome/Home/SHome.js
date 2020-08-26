@@ -5,23 +5,21 @@ import {
   View,
   Text,
   TouchableOpacity,
+  ImageBackground
 } from 'react-native';
 
 
 export default class SHome extends Component {
   render(){      
     return(
-          
+      <ImageBackground 
+      source={require('../../../images/home-background.jpg')}
+      style={styles.mainBack}>
         <View style={styles.container}>
           <View style={styles.row}>
               <View style={styles.widgets}>
                 <TouchableOpacity onPress={()=> this.props.navigation.navigate('Communication')}>
                   <Text style={styles.text} > Communication </Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.widgets}>
-                <TouchableOpacity onPress={()=> this.props.navigation.navigate('SignalBlink')}>
-                  <Text style={styles.text}> Signal Blink </Text>
                 </TouchableOpacity>
               </View>
           </View> 
@@ -45,13 +43,9 @@ export default class SHome extends Component {
                   <Text style={styles.text}> Help </Text>
                 </TouchableOpacity>
               </View>
-              <View style={styles.widgets}>
-                <TouchableOpacity onPress={()=> this.props.navigation.navigate('MatchCode')}>
-                  <Text style={styles.text}> Match Code </Text>
-                </TouchableOpacity>
-              </View>
            </View> 
         </View>
+        </ImageBackground>
         );
       }
     }

@@ -1,11 +1,17 @@
 import * as React from 'react';
-import { View, Text,StyleSheet } from 'react-native';
+import { View, Text,StyleSheet, ImageBackground } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 const  Help =() => {
   return (
+    <ImageBackground 
+    source={require('../../../images/sensors.jpg')}
+    style={{flex:1, width:'100%', height:'100%'}}>
+    <ScrollView>
+
     <View style={{padding:10}}>
-      <Text style={{fontSize:25, fontWeight:"bold"}}>Help Regarding Safety Questions:</Text>
+      <Text style={{fontSize:25, fontWeight:"bold", color: 'white'}}>Help Regarding Safety Questions:</Text>
       <Text style={styles.text}>1-Are any of your valuables visible from the street?</Text>
       <Text style={styles.text1}>Residential burglaries account for nearly 75 percent of all break-ins in America. If you can see valuables inside your home from the street, so can a burglar. Burglars are notorious for “window shopping” so SafeWise encourages you to keep valuables, like cash, jewelry, electronics and guns, out of view.</Text>
       <Text style={styles.text}>2-Are your doors and windows visible from the street or from a neighbors view?</Text>
@@ -17,6 +23,8 @@ const  Help =() => {
       <Text style={styles.text}>5-Is your house number clearly visible from the street?</Text>
       <Text style={styles.text1}>When an emergency strikes, every second counts. Make sure that police, firefighters, and/or paramedics can quickly find the right house by keeping your house numbers visible. SafeWise advises checking your house numbers quarterly to ensure they haven’t faded or been obstructed by vegetation.</Text>
     </View>
+    </ScrollView>
+    </ImageBackground>
   );
 }
 
@@ -25,9 +33,11 @@ const styles = StyleSheet.create({
   text: {
     fontSize:20,
     fontWeight:"bold",
+    color:'#ffffff'
   },
   text1: {
     fontSize:15,
+    color:'#ffffff'
     
   }
 })

@@ -49,7 +49,14 @@ export default class ANavigation extends Component{
     return(
     <SafeAreaProvider>
      
-        <Stack.Navigator >
+        <Stack.Navigator screenOptions={{
+          headerTintColor:'white',
+          headerTitleAlign:"center",
+          headerStyle:{
+            backgroundColor:'#1c313a',
+            opacity:0.8
+          }
+        }} >
           
             <Stack.Screen 
               name="RHomeScreen" 
@@ -61,17 +68,29 @@ export default class ANavigation extends Component{
             <Stack.Screen name="Chat" component={Chat}  />
             <Stack.Screen name="Sms" component={Sms} />
             <Stack.Screen name="Communication" component={Communication}/>
-            <Stack.Screen name="EmergencySignals" component={EmergencySignal}  />
+            <Stack.Screen name="EmergencySignals" component={EmergencySignal} 
+              options={{
+                title: 'Emergency Signal',
+              }} />
             <Stack.Screen name="Helps" component={Help}  />
-            <Stack.Screen name="ComplaintAndSuggestion" component={ComplaintAndSuggestion}  />
+            <Stack.Screen name="ComplaintAndSuggestion" component={ComplaintAndSuggestion} 
+              options={{
+                title: 'Complaint and Suggestions',
+              }} />
             <Stack.Screen name="Complaints" component={Complaints} />
             <Stack.Screen name="Suggestions" component={Suggestions} />
             <Stack.Screen name="TrackSecurity" component={TrackSecurity} />
             <Stack.Screen name="Settings" component={Settings} /> 
-            <Stack.Screen name="SensorSettings" component={SensorSettings}  /> 
+            <Stack.Screen name="SensorSettings" component={SensorSettings} 
+              options={{
+                title: 'Sensor Settings',
+              }} /> 
             <Stack.Screen name="Firehazard" component={FireHazardsSensors}  />
             <Stack.Screen name="Intrusion" component={IntrusionSesnors} /> 
-            <Stack.Screen name="AccountSettings" component={AccountSettings}  />
+            <Stack.Screen name="AccountSettings" component={AccountSettings} 
+              options={{
+                title: 'Update Account',
+              }} />
         </Stack.Navigator>
        
     </SafeAreaProvider>

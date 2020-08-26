@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View, Text, SafeAreaView, Button, StyleSheet } from 'react-native';
+import { View, Text, SafeAreaView, Button, StyleSheet, ImageBackground } from 'react-native';
 
 function Separator() {
   return <View style={styles.separator} />;
@@ -8,10 +8,13 @@ function Separator() {
 export default class  SensorSettings extends Component{
   render(){
     return (
+      <ImageBackground 
+                source={require('../../../../images/sensors.jpg')}
+                style={{flex:1, width:'100%', height:'100%',}}>
       <SafeAreaView style={styles.container}>
         <View style={{ marginTop: 50}}>
           <Button 
-            title="FireHazard Sesnors"
+            title="FireHazard Sensors"
             onPress={() => this.props.navigation.navigate('Firehazard')}
           />
         <Separator />
@@ -24,6 +27,7 @@ export default class  SensorSettings extends Component{
           
         
       </SafeAreaView>
+      </ImageBackground>
     );
   }
 }

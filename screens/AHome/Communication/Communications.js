@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text,SafeAreaView,StyleSheet,Button } from 'react-native';
+import { View, Text,SafeAreaView,StyleSheet,Button,ImageBackground } from 'react-native';
 
 
 function Separator() {
@@ -10,9 +10,12 @@ export default class  Communications extends Component {
 
   render(){
     return (
+      <ImageBackground 
+                source={require('../../../images/communication.jpg')}
+                style={styles.mainBack}>
       <SafeAreaView style={styles.container}>
-        <View style = {{ marginTop: 30}}>
-          <Button 
+        <View style = {{ marginTop: 50}}>
+          <Button style={styles.button}
             title="Contacts"
             onPress={() => this.props.navigation.navigate('Contact')}
           />
@@ -24,6 +27,7 @@ export default class  Communications extends Component {
           </View>
         
       </SafeAreaView>
+      </ImageBackground>
     );
   }
 }
@@ -39,4 +43,15 @@ const styles = StyleSheet.create({
     borderBottomColor: '#737373',
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
+  mainBack:{
+    flex:1,
+    width:'100%',
+    height:'100%',
+  },
+buttonText: {
+  fontSize:16,
+  fontWeight:'500',
+  color:'#ffffff',
+  textAlign:'center',
+},
 });

@@ -27,11 +27,11 @@ export default class TrackSecurity extends Component {
       Dimensions.get("window").height * 0.0122
     },
     coordinates: [
-      { name: 'Security 1', latitude: 37.8025259, longitude: -122.4351431, image: require('../../../images/security.png') },
-      { name: 'Security 2', latitude: 37.7946386, longitude: -122.421646, image: require('../../../images/security.png') },
-      { name: 'Security 3', latitude: 37.7665248, longitude: -122.4165628, image: require('../../../images/security.png') },
-      { name: 'Security 4', latitude: 37.7834153, longitude: -122.4527787, image: require('../../../images/security.png') },
-      { name: 'Security 5', latitude: 37.7948105, longitude: -122.4596065, image: require('../../../images/security.png') },
+      { name: 'Security 1', latitude: 31.527882, longitude: 74.31765, image: require('../../../images/security.png') },
+      { name: 'Security 2', latitude: 31.52929, longitude: 74.314504, image: require('../../../images/security.png') },
+      { name: 'Security 3', latitude: 31.52715, longitude: 74.311371, image: require('../../../images/security.png') },
+      { name: 'Security 4', latitude: 31.524333, longitude: 74.313581, image: require('../../../images/security.png') },
+      { name: 'Security 5', latitude: 31.524582, longitude: 74.316973, image: require('../../../images/security.png') },
     ],
     markers: [],
     locationChoosen: false
@@ -107,8 +107,8 @@ export default class TrackSecurity extends Component {
     this._map.animateToRegion({
       latitude: location.latitude,
       longitude: location.longitude,
-      latitudeDelta: 0.09,
-      longitudeDelta: 0.035
+      latitudeDelta: 0.03,
+      longitudeDelta: 0.025
     })
 
     this.state.markers[index].showCallout()

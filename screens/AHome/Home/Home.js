@@ -4,12 +4,16 @@ import {
   View,
   Text,
   TouchableOpacity,
+  ImageBackground
 } from 'react-native';
 
 
 export default class HomeScreen extends Component {
     render(){
       return(
+        <ImageBackground 
+                source={require('../../../images/home-background.jpg')}
+                style={homeStyle.mainBack}>
         <View style={homeStyle.container}>
         <View style={homeStyle.row}>
             <View style={homeStyle.widgets}>
@@ -39,7 +43,9 @@ export default class HomeScreen extends Component {
 
         <View style={homeStyle.row}>
             <View style={homeStyle.widgets}>
-              <Text style={homeStyle.text}> Records </Text>
+            <TouchableOpacity onPress={()=> this.props.navigation.navigate('Records')}>
+                <Text style={homeStyle.text}> Records </Text>
+              </TouchableOpacity>
             </View>
             <View style={homeStyle.widgets}>
               <TouchableOpacity onPress={()=> this.props.navigation.navigate('ComplaintAndSuggestion')}>
@@ -48,6 +54,7 @@ export default class HomeScreen extends Component {
             </View>
         </View>
       </View>
+      </ImageBackground>
     );
     }
 }

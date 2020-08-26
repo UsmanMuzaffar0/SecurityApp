@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text,SafeAreaView,StyleSheet,Button } from 'react-native';
+import { View, Text,SafeAreaView,StyleSheet,Button, ImageBackground } from 'react-native';
 
 
 function Separator() {
@@ -10,6 +10,9 @@ export default class  Communications extends Component {
 
   render(){
     return (
+      <ImageBackground 
+                source={require('../../../images/communication.jpg')}
+                style={{flex:1, width:'100%', height:'100%'}}>
       <SafeAreaView style={styles.container}>
         <View style = {{ marginTop: 30}}>
           <Button 
@@ -29,6 +32,7 @@ export default class  Communications extends Component {
           </View>
         
       </SafeAreaView>
+      </ImageBackground>
     );
   }
 }

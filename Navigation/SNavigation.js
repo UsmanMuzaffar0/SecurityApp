@@ -12,11 +12,9 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import HomeScreen from '../screens/SHome/Home/SHome';
 import Contact from '../screens/SHome/Communication/Contact';
-import SignalBlink from '../screens/SHome/SignalBlink/SignalBlink';
 import Help from '../screens/SHome/Help/Help';
 import UpdateAccount from '../screens/SHome/Settigns/UpdateAccount/UpdateAccount';
 import TrackResident from '../screens/SHome/TrackResident/TrackResident';
-import MatchCode from '../screens/SHome/MatchCode/MatchCode';
 import Settigns from '../screens/SHome/Settigns/Settings';
 import Communication from '../screens/SHome/Communication/Communications';
 import Chat from '../screens/SHome/Communication/Chat';
@@ -28,7 +26,14 @@ export default function ANavigation(){
     return(
     <SafeAreaProvider>
      
-        <Stack.Navigator >
+        <Stack.Navigator screenOptions={{
+          headerTintColor:'white',
+          headerTitleAlign:"center",
+          headerStyle:{
+            backgroundColor:'#1c313a',
+            opacity:0.8
+          }
+        }} >
            
             <Stack.Screen  
                 name="SHomeScreen" 
@@ -41,11 +46,12 @@ export default function ANavigation(){
             <Stack.Screen name="Chat" component={Chat}  />
             <Stack.Screen name="Sms" component={Sms}  />
             <Stack.Screen name="Communication" component={Communication}/>
-            <Stack.Screen name="SignalBlink" component={SignalBlink}  />
             <Stack.Screen name="Help" component={Help}  />
             <Stack.Screen name="TrackResident" component={TrackResident}  />
-            <Stack.Screen name="MatchCode" component={MatchCode}  />
-            <Stack.Screen name="UpdateAccount" component={UpdateAccount}  />
+            <Stack.Screen name="UpdateAccount" component={UpdateAccount} 
+              options={{
+                title: 'Update Account',
+              }} />
             <Stack.Screen name="Settings" component={Settigns}  />
 
           </Stack.Navigator>

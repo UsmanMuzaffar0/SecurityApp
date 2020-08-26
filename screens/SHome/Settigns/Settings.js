@@ -1,5 +1,5 @@
 import React, { Component, useContext,useState } from 'react';
-import { View, Text,StyleSheet,SafeAreaView ,Button} from 'react-native';
+import { View, Text,StyleSheet,SafeAreaView ,Button, ImageBackground} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {AuthContext} from '../../../components/Context';
@@ -18,6 +18,9 @@ const HandleSignOut = () => {
 }
 
   return (
+    <ImageBackground 
+                source={require('../../../images/message.jpg')}
+                style={{flex:1, width:'100%', height:'100%'}}>
     <SafeAreaView style={styles.container}>
       <View style = {{ marginTop: 50}}>
       <Button 
@@ -32,6 +35,7 @@ const HandleSignOut = () => {
         </View>
       
     </SafeAreaView>
+    </ImageBackground>
   );
 }
 

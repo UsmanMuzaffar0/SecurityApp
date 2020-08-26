@@ -5,12 +5,16 @@ import {
   View,
   Text,
   TouchableOpacity,
+  ImageBackground
 } from 'react-native';
 
 
 export default class RHome extends Component {
   render(){      
     return(
+      <ImageBackground 
+                source={require('../../../images/home-background.jpg')}
+                style={styles.mainBack}>
           
         <View style={styles.container}>
           <View style={styles.row}>
@@ -52,6 +56,7 @@ export default class RHome extends Component {
               </View>
            </View> 
         </View>
+        </ImageBackground>
         );
       }
     }

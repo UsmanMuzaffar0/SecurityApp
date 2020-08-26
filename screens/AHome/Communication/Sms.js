@@ -1,6 +1,6 @@
 /*This is an Example of Sending Text SMS in React Native*/
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ImageBackground } from 'react-native';
 import SendSMS from 'react-native-sms'
 import { TextInput } from 'react-native-paper';
 
@@ -35,6 +35,9 @@ export default class Sms extends React.Component {
   }
   render() {
     return (
+      <ImageBackground 
+                source={require('../../../images/message.jpg')}
+                style={styles.mainBack}>
       <View >
           <TextInput style={styles.textinput}
             keyboardType="phone-pad"
@@ -46,6 +49,7 @@ export default class Sms extends React.Component {
           </View>
         </TouchableOpacity>
       </View>
+      </ImageBackground>
     );
   }
 }
@@ -59,21 +63,28 @@ const styles = StyleSheet.create({
     borderColor: '#000',
   },
   text: {
-    color: 'black',
+    color: 'white',
     textAlign:'center',
     fontSize: 25,
     marginTop:16,
+    fontWeight:"bold"
   },
   textinput:{
-    height: 40,
+    height: 50,
     borderColor: 'gray',
     borderWidth: 1,
-    marginTop: 5,
+    marginTop: 50,
+    borderRadius:20,
     marginBottom:5
   },
   ImageStyle: {
     height: 150,
     width: 150,
     resizeMode: 'stretch',
+  },
+  mainBack:{
+    flex:1,
+    width:'100%',
+    height:'100%',
   },
 });

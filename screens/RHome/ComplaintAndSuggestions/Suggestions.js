@@ -5,10 +5,11 @@ import {
   StyleSheet,
   Button, 
   SafeAreaView, 
-  TextInput 
+  TouchableOpacity,
+  ImageBackground,
 } from 'react-native';
  import { ip } from '../../../components/Context';
-
+ import { TextInput } from 'react-native-paper';
 export default class Suggestions extends Component  {
 
   constructor(props){
@@ -59,36 +60,38 @@ submitFeedback = () =>{
   render() {
    
   return (
+    <ImageBackground 
+                source={require('../../../images/comSuggest.jpg')}
+                style={{flex:1, width:'100%', height:'100%'}}>
     <SafeAreaView style={styles.container}>
       <View style = {{ marginTop: 20}}>
         <Text style={styles.txt}>Feedback Form</Text>
-        <Text >We would love to hear your thoughts, concerns or problems with anything so we can improve!</Text>
+        <Text style={{color:'#ffffff',fontWeight:'300',fontSize:17}} >We would love to hear your thoughts, concerns or problems with anything so we can improve!</Text>
       
       
     
-      <Text style ={{fontWeight: "bold",marginTop: 20}}>Describe Feedback:  * </Text>
+      <Text style ={{fontWeight:"bold",marginTop:18,fontSize:17,color:'#ffffff'}}>Describe Feedback:  * </Text>
       <TextInput style={styles.textinputlarge}
         onChangeText= {feedback => this.setState({feedback}) }/>
-      <Text style ={{fontWeight: "bold"}}> Name:  * </Text>
+      <Text style ={{fontWeight: "bold",fontSize:17,color:'#ffffff',marginTop:18}}> Name:  * </Text>
       <TextInput style={styles.textinput}
         onChangeText= {name => this.setState({name}) }/>
-      <Text style ={{fontWeight: "bold", marginTop: 15}}>Ph-Number:  * </Text>
+      <Text style ={{fontWeight:"bold", marginTop:18,fontSize:17,color:'#ffffff'}}>Ph-Number:  * </Text>
       <TextInput style={styles.textinput} 
           placeholder="ex: 0308******97"
           keyboardType= "email-address"
           onChangeText= {phone_number => this.setState({phone_number}) }/>
   
       <View style = {{padding: 50}}>
-      <Button 
-            title="Submit Feedback" 
-            color="#737373"
-            onPress={this.submitFeedback}/>
+        <TouchableOpacity style={styles.button} onPress={this.submitFeedback} >
+                <Text style={styles.buttonText}>Submit FeedBack</Text>
+        </TouchableOpacity>
       
       </View>
         </View>
       
     </SafeAreaView>
-
+    </ImageBackground>
     
   );
 }
@@ -104,24 +107,35 @@ const styles = StyleSheet.create({
   txt:{
     fontWeight:"bold",
     marginBottom: 5,
-    fontSize: 20
+    fontSize: 25,
+    color:'#ffffff'
   },
   textinput:{
-    height: 40,
+    height: 50,
     borderColor: 'gray',
     borderWidth: 1,
-    marginTop: 5,
-    marginBottom:5,
-    
-    
+    borderRadius:20,
+    marginBottom:5
   },
   textinputlarge:{
-    height: 100,
+    height: 80,
+    marginTop:10,
     borderColor: 'gray',
     borderWidth: 1,
-    marginTop: 5,
-    marginBottom:5
-    
-    
-  }
+    borderRadius:20,
+    marginBottom:5  
+  },
+  button: {
+    backgroundColor:'#607d8b',
+    borderRadius: 25,
+    opacity:0.9,
+    width:300,
+    paddingVertical:12,
+},
+buttonText: {
+    fontSize:16,
+    fontWeight:'500',
+    color:'#ffffff',
+    textAlign:'center',
+},
 });

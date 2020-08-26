@@ -1,6 +1,6 @@
 /*This is an Example of Sending Text SMS in React Native*/
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, ImageBackground } from 'react-native';
 import SendSMS from 'react-native-sms'
 import { TextInput } from 'react-native-paper';
 
@@ -9,8 +9,7 @@ export default class Sms extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            phone_number:'',
-            
+            phone_number:'',     
        }
     }
 
@@ -22,8 +21,8 @@ export default class Sms extends React.Component {
         //Recipients Number
         recipients: [phone_number],
         //An array of types that would trigger a "completed" response when using android
-        successTypes: ['sent', 'queued']
-    }, (completed, cancelled, error) => {
+        successTypes: ['sent', 'queued']}, 
+        (completed, cancelled, error) => {
         if(completed){
           console.log('SMS Sent Completed');
         }else if(cancelled){
@@ -35,6 +34,9 @@ export default class Sms extends React.Component {
   }
   render() {
     return (
+      <ImageBackground 
+                source={require('../../../images/message.jpg')}
+                style={{flex:1, width:'100%', height:'100%'}}>
       <View >
           <TextInput style={styles.textinput}
             placeholder = "Type Your Phone NUmber"
@@ -46,6 +48,7 @@ export default class Sms extends React.Component {
           </View>
         </TouchableOpacity>
       </View>
+      </ImageBackground>
     );
   }
 }
@@ -59,16 +62,18 @@ const styles = StyleSheet.create({
     borderColor: '#000',
   },
   text: {
-    color: 'black',
+    color: 'white',
     textAlign:'center',
     fontSize: 25,
     marginTop:16,
+    fontWeight:"bold"
   },
   textinput:{
-    height: 40,
+    height: 50,
     borderColor: 'gray',
     borderWidth: 1,
-    marginTop: 5,
+    marginTop: 50,
+    borderRadius:20,
     marginBottom:5
   },
   ImageStyle: {

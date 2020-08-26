@@ -1,37 +1,135 @@
 import React, { Component } from 'react';
-import { View, Text,AsyncStorage,StyleSheet, FlatList } from 'react-native';
-import {ip} from '../../../components/Context';
+import { View, Text,StyleSheet,SafeAreaView ,TouchableOpacity,FlatList, ImageBackground} from 'react-native';
+import { TextInput } from 'react-native-paper';
+import { ScrollView } from 'react-native-gesture-handler';
+import Toast from 'react-native-simple-toast';
+import { ip } from '../../../components/Context';
 
 
-export default class Complaints extends Component {
+export default class Complaints extends Component{
 
-    state = {
-        data: []
+    constructor(props){
+        super(props)
+        this.state = {
+            apiData: [],
+            id: '' 
+
+       }
+    //    this.id= null;
+    }
+    DeleteComplaint = () =>{
+         const {id} = this.state;
+        fetch(ip+':9090/rcomplaint/' + (this.state.id),{
+            method: 'DELETE'
+        }).then((res)=> {
+            console.log(res.rows)
+        }).done();
+            this.id= null;
+        Toast.show('Complaint Deleted!',Toast.LONG);
     }
 
-    fetchData = async() => {
-        const response = await fetch(ip+':9090/rcomplaint');
-        const rcomplaints = await response.json();
-        this.setState({data:rcomplaints});
+    
+    ViewComplaints = () =>{
+        fetch(ip+':9090/rcomplaint',{
+            method:'GET'
+        }).then((responseData) => {
+            return responseData.json();
+        }).then((jsonData) => {
+            console.log(jsonData);
+            this.setState({apiData: jsonData})
+            console.log(this.state.apiData)
+        }).done();
+        this.id = null;
+        
     }
-    componentDidMount(){
-        this.fetchData();
-    }
+    
+    
+
     render(){
-        return(
-            <View>
-                <FlatList
-                    data={this.state.data}
-                    keyExtractor={(item,index) => index.toString()}
-                    renderItem={({item}) =>
-                    <View style={{backgroundColor:'#546e7a',padding:10,margin:10}}>
-                        <Text style={{color:'#ffffff', fontWeight:'bold',}}>Resident Name: {item.name}</Text>
-                        <Text style={{color:'#ffffff'}}>Ph-Number: {item.phone_number}</Text>
-                        <Text style={{color:'#ffffff'}}>Nature of Complaint: {item.nature}</Text>
-                        <Text style={{color:'#ffffff'}}>Detail:  {item.details}</Text>
+
+        const data = this.state.apiData;
+        let dataDisplay = data.map(function(jsonData){
+            return(
+                <View key={jsonData.id}>
+                    <View style={{backgroundColor:'#546e7a',padding:10,margin:10, opacity:0.8}}>
+                        <Text style={{color:'#ffffff', fontWeight:'bold',}}>id: {jsonData.id}</Text>
+                        <Text style={{color:'#ffffff', fontWeight:'bold',}}>Resident Name: {jsonData.name}</Text>
+                        <Text style={{color:'#ffffff'}}>Ph-Number: {jsonData.phone_number}</Text>
+                        <Text style={{color:'#ffffff'}}>Nature of Complaints: {jsonData.nature}</Text>
+                        <Text style={{color:'#ffffff'}}>Detail: {jsonData.details}</Text>
+                       
                     </View>
-                    } />
+                </View>
+            )
+        });
+        return(
+        <ImageBackground 
+            source={require('../../../images/comSuggest.jpg')}
+            style={{flex:1, width:'100%', height:'100%'}}>    
+        <SafeAreaView style={styles.container}>
+            <View style = {{ marginTop: 20}}>
+          
+                <Text style ={{fontWeight: "bold",marginTop:5, fontSize:18, color:'white'}}>Enter ID: </Text>
+                
+                <TextInput style={styles.textinput}
+                    placeholder="Enter Id of Complaints"
+                    keyboardType="phone-pad"
+                    onChangeText= {id => this.setState({id}) }/>
+        
+        
+                <View style = {{alignSelf: "center"}}>
+                    <TouchableOpacity style={styles.button} onPress={this.DeleteComplaint} >
+                        <Text style={styles.buttonText}>Delete Complaint</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style = {{alignSelf: "center"}}>
+                    <TouchableOpacity style={styles.button} onPress={this.ViewComplaints} >
+                        <Text style={styles.buttonText}>View Complaint</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
+            <ScrollView>
+                {dataDisplay}
+            </ScrollView>
+        </SafeAreaView>
+        </ImageBackground>
         );
     }
-}
+} 
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      marginTop: 1,
+      marginHorizontal: 16,
+    },
+    separator: {
+      marginVertical: 8,
+      borderBottomColor: '#737373',
+      borderBottomWidth: StyleSheet.hairlineWidth,
+    },
+   
+    textinput:{
+        height: 40,
+        borderColor: 'gray',
+        borderWidth: 1,
+        marginTop: 10,
+        borderRadius:20,
+        marginBottom:5
+    },
+   
+    buttonText: {
+      fontSize:16,
+      fontWeight:'500',
+      color:'#ffffff',
+      textAlign:'center',
+  },
+  button: {
+      backgroundColor:'#607d8b',
+      borderRadius: 25,
+      opacity:0.9,
+      marginVertical:10,
+      width:300,
+      paddingVertical:12,
+  }
+  });

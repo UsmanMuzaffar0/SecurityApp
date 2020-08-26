@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text,SafeAreaView,StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text,SafeAreaView,StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import { ip } from '../../../components/Context';
 
@@ -62,25 +62,28 @@ export default class  Complaints extends Component{
 
   render(){
     return (
+      <ImageBackground 
+                source={require('../../../images/comSuggest.jpg')}
+                style={{flex:1, width:'100%', height:'100%'}}>
       <SafeAreaView style={styles.container}>
         <View style = {{ marginTop: 5}}>
           <Text style={styles.txt}>------We are here to assist you!------</Text>
-          <Text style = {{textAlign:"center"}}>Please complete the form below for your complaints</Text>
+          <Text style = {{textAlign:"center", color:'#ffffff'}}>Please complete the form below for your complaints</Text>
         <Separator />
-        <Text style ={{fontWeight: "bold",marginTop:5}}>Name: </Text>
+        <Text style ={{fontWeight: "bold",fontSize:16,color:'#ffffff'}}>Name: </Text>
         <TextInput style={styles.textinput}
             keyboardType="name-phone-pad"
             onChangeText= {name => this.setState({name}) }/>
-        <Text style ={{fontWeight: "bold"}}>Ph-Number: </Text>
+        <Text style ={{fontWeight: "bold",color:'#ffffff',fontSize:16}}>Ph-Number: </Text>
         <TextInput style={styles.textinput} 
             placeholder="ex: 0308******97"
             keyboardType= "phone-pad"
             onChangeText= {phone_number => this.setState({phone_number}) }/>
         <Separator />
-        <Text style ={{fontWeight: "bold"}}>The nature of Complaint: </Text>
+        <Text style ={{fontWeight: "bold",color:'#ffffff',fontSize:16}}>The nature of Complaint: </Text>
         <TextInput style={styles.textinputlarge}
             onChangeText= {nature => this.setState({nature}) } />
-        <Text style ={{fontWeight: "bold"}}>The specific details of Complaint: </Text>
+        <Text style ={{fontWeight: "bold",fontSize:16,color:'#ffffff'}}>The specific details of Complaint: </Text>
         <TextInput style={styles.textinputlarge} 
             onChangeText= {details => this.setState({details}) }/>
         <View style = {{padding: 30, marginTop: 1}}>
@@ -92,6 +95,7 @@ export default class  Complaints extends Component{
           </View>
         
       </SafeAreaView>
+      </ImageBackground>
     );
   }
 }
@@ -111,20 +115,22 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight:"bold",
     marginBottom: 5,
-    fontSize: 20
+    fontSize: 20,
+    color:'#ffffff'
   },
   textinput:{
-    height: 40,
+    height: 50,
     borderColor: 'gray',
     borderWidth: 1,
-    marginTop: 5,
+    borderRadius:20,
     marginBottom:5
   },
   textinputlarge:{
-    height: 100,
+    height: 80,
+    marginTop:10,
     borderColor: 'gray',
     borderWidth: 1,
-    marginTop: 5,
+    borderRadius:20,
     marginBottom:5
     
   },
@@ -138,7 +144,7 @@ button: {
     backgroundColor:'#607d8b',
     borderRadius: 25,
     opacity:0.9,
-    marginVertical:10,
+    marginVertical:5,
     width:300,
     paddingVertical:12,
 }

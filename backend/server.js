@@ -138,7 +138,7 @@ app.get('/rsuggestion', function(req,res){
 
 //get users from admin Site
 app.get('/users', function(req,res){
-    connection.query('SELECT * FROM users', function(error, rows, fields){
+    connection.query('SELECT * FROM users WHERE role=? OR role=?',['R','S'], function(error, rows, fields){
         if(!!error) console.log('error');
         else{
             console.log(rows);
@@ -160,6 +160,32 @@ app.delete('/users/:id', function(req, res){
         }
     })
 })
+// delete rComplaints from admin
+
+app.delete('/rcomplaint/:id', function(req, res){
+    console.log(req.params.id);
+    connection.query('DELETE FROM rcomplaints WHERE id=?', req.params.id, function(error, rows, fields){
+        if(!!error)
+        console.log('error');
+        else{
+            console.log(rows);
+            res.end('success delete!');
+        }
+    })
+})
+// delete rSuggestion from admin
+
+app.delete('/rsuggestion/:id', function(req, res){
+    console.log(req.params.id);
+    connection.query('DELETE FROM rsuggestions WHERE id=?', req.params.id, function(error, rows, fields){
+        if(!!error)
+        console.log('error');
+        else{
+            console.log(rows);
+            res.end('success delete!');
+        }
+    })
+})
 
 //update Users
 
@@ -173,4 +199,16 @@ app.put('/users', function(req, res){
             console.log(rows);
             res.end(JSON.stringify(rows));
     })
+})
+
+//Records in Admin module
+
+app.get('/getUserRecords', function(req,res){
+    connection.query('SELECT * FROM users WHERE role=? OR role=?',['R','S'], function(error, rows, fields){
+        if(!!error) console.log('error');
+        else{
+            console.log(rows);
+            res.send(rows);
+        }
+    });
 })

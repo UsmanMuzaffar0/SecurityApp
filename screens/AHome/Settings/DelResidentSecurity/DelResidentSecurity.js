@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text,StyleSheet,SafeAreaView ,TouchableOpacity,FlatList} from 'react-native';
+import { View, Text,StyleSheet,SafeAreaView ,TouchableOpacity,FlatList, ImageBackground} from 'react-native';
 import { TextInput } from 'react-native-paper';
 import { ScrollView } from 'react-native-gesture-handler';
 import Toast from 'react-native-simple-toast';
@@ -51,7 +51,7 @@ export default class DelResidentSecurity extends Component{
         let dataDisplay = data.map(function(jsonData){
             return(
                 <View key={jsonData.id}>
-                    <View style={{backgroundColor:'#546e7a',padding:10,margin:10}}>
+                    <View style={{backgroundColor:'#546e7a',padding:10,margin:10, opacity:0.8}}>
                         <Text style={{color:'#ffffff', fontWeight:'bold',}}>id: {jsonData.id}</Text>
                         <Text style={{color:'#ffffff', fontWeight:'bold',}}>Name: {jsonData.name}</Text>
                         <Text style={{color:'#ffffff'}}>Ph-Number: {jsonData.phone_number}</Text>
@@ -62,13 +62,18 @@ export default class DelResidentSecurity extends Component{
             )
         });
         return(
+        <ImageBackground 
+            source={require('../../../../images/deleteRes.jpg')}
+            style={{flex:1, width:'100%', height:'100%'}}>    
         <SafeAreaView style={styles.container}>
-            <View style = {{ marginTop: 5}}>
+            <View style = {{ marginTop: 20}}>
           
-                <Text style ={{fontWeight: "bold",marginTop:5}}>Enter ID: </Text>
+                <Text style ={{fontWeight: "bold",marginTop:5, fontSize:18, color:'white'}}>Enter ID: </Text>
+                
                 <TextInput style={styles.textinput}
-                keyboardType="name-phone-pad"
-                onChangeText= {id => this.setState({id}) }/>
+                    placeholder="Enter Id of Resident/Security"
+                    keyboardType="phone-pad"
+                    onChangeText= {id => this.setState({id}) }/>
         
         
                 <View style = {{alignSelf: "center"}}>
@@ -86,6 +91,7 @@ export default class DelResidentSecurity extends Component{
                 {dataDisplay}
             </ScrollView>
         </SafeAreaView>
+        </ImageBackground>
         );
     }
 } 
@@ -103,11 +109,12 @@ const styles = StyleSheet.create({
     },
    
     textinput:{
-      height: 40,
-      borderColor: 'gray',
-      borderWidth: 1,
-      marginTop: 5,
-      marginBottom:5
+        height: 40,
+        borderColor: 'gray',
+        borderWidth: 1,
+        marginTop: 10,
+        borderRadius:20,
+        marginBottom:5
     },
    
     buttonText: {
