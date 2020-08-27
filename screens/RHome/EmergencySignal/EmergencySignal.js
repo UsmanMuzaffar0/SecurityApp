@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import { View, Text , ActivityIndicator, StyleSheet} from 'react-native';
+import { View, Text , ActivityIndicator, StyleSheet, ImageBackground} from 'react-native';
+import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 
 export default class EmergencySignal extends Component {
   
@@ -7,7 +8,8 @@ export default class EmergencySignal extends Component {
     super(props);
     this.state = {
       isLoading: true,
-      dataSource: null
+      dataSource: null,
+      apiData: []
     }
   }
 
@@ -27,6 +29,24 @@ export default class EmergencySignal extends Component {
              });
              
   }
+
+  ViewRecordSensors = () =>{
+    return fetch('https://api.thingspeak.com/channels/1121453/feeds.json', )
+             .then ( ( response) => response.json())
+             .then( (responseJson) => {
+                
+              this.setState({
+                
+                apiData: responseJson.feeds,
+                
+              })
+              
+             })
+             .catch((error) =>{
+               console.log(error);
+             });
+    
+}
   
   render(){
     if(this.state.isLoading){
@@ -69,11 +89,36 @@ export default class EmergencySignal extends Component {
         }
       });
 
+      const data = this.state.apiData;
+        let dataDisplay = data.map(function(jsonData){
+            return(
+                <View key={jsonData.id}>
+                    <View style={{backgroundColor:'#546e7a',padding:10,margin:10, opacity:0.8}}>
+                        <Text style={{color:'#ffffff', fontWeight:'bold',}}>Id: {jsonData.entry_id}</Text>
+                        <Text style={{color:'#ffffff', fontWeight:'bold',}}>Gas Value: {jsonData.field1}</Text>
+                        <Text style={{color:'#ffffff'}}>PIR Motion Value: {jsonData.field2}</Text>
+                        <Text style={{color:'#ffffff'}}>Time: {jsonData.created_at}</Text>
+                       
+                    </View>
+                </View>
+            )
+        });
+
       return(
+        <ImageBackground 
+                source={require('../../../images/sensors.jpg')}
+                style={{flex:1, width:'100%', height:'100%'}}>
         <View style={styles.container}>
+          <TouchableOpacity style={styles.button} onPress={ this.ViewRecordSensors} >
+                <Text style={styles.buttonText}>View Sensors Records</Text>
+                </TouchableOpacity>
           {feeds}
+          <ScrollView>
+            {dataDisplay}
+          </ScrollView>
           
         </View>
+        </ImageBackground>
       );
     }
  
@@ -82,13 +127,27 @@ export default class EmergencySignal extends Component {
 
 const styles = StyleSheet.create ({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'center'
+    flexGrow: 1,
+      alignItems:'center'
     
   },
   item: {
     flex: 1,
 
-  }
+  },
+  buttonText: {
+    fontSize:16,
+    fontWeight:'500',
+    color:'#ffffff',
+    textAlign:'center',
+},
+button: {
+    backgroundColor:'#607d8b',
+    borderRadius: 25,
+    opacity:0.9,
+    marginVertical:10,
+    width:250,
+    paddingVertical:12,
+    marginTop:20
+}
 })

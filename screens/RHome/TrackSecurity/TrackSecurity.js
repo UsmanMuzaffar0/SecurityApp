@@ -137,8 +137,8 @@ export default class TrackSecurity extends Component {
         initialRegion={this.state.focusedLocation}
         style={styles.map}
         onPress={this.pickLocationHandler}
-        ref={ref => this.map= ref}
-        //ref={map => this._map = map}
+        //ref={ref => this.map= ref}
+        ref={map => this._map = map}
         >
         <Polygon 
           coordinates={this.state.coordinates}
