@@ -183,12 +183,7 @@ const authContext = useMemo( () => (
     } catch (error) {
       console.log(error.message)
     }
-    
-       
-
-    },
-    
-  
+  },
   }
 )); 
 
@@ -205,8 +200,7 @@ SaveUserDetailsInLocalStorageAfterSignup = async (role, token) => {
 }
 
 SaveUserDetailsInLocalStorageAfterSignIn = async (role,token) => {
-  
-  
+    
   try{
 
     await AsyncStorage.setItem('role',role);
